@@ -2,17 +2,31 @@ library(dplyr)
 library(tidyr)
 
 
-# 1.1 Load the datasets (Test + Training)
-features <- read.table("UCI HAR Dataset/features.txt", col.names = c("index", "feature"))
-activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("code", "activity"))
+# 1. Download and unzip the dataset if it doesn't already exist
+filename <- "UCI_HAR_Dataset.zip"
+foldername <- "UCI HAR Dataset"
 
-subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt",col.names = c("subject"))
-X_train <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$feature)
-Y_train <- read.table("UCI HAR Dataset/train/Y_train.txt", col.names = "activity_code")
+if (!file.exists(filename)) {
+  url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+  download.file(url, destfile = filename, mode = "wb")
+}
 
-subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt",col.names = c("subject"))
-X_test <- read.table("UCI HAR Dataset/test/X_test.txt", col.names = features$feature)
-Y_test <- read.table("UCI HAR Dataset/test/Y_test.txt", col.names = "activity_code")
+if (!file.exists(foldername)) {
+  unzip(filename)
+}
+
+# 2. Read in the data
+features <- read.table(file.path(foldername, "features.txt"), col.names = c("index", "feature"))
+activities <- read.table(file.path(foldername, "activity_labels.txt"), col.names = c("code", "activity"))
+
+subject_train <- read.table(file.path(foldername, "train", "subject_train.txt"), col.names = "subject")
+X_train <- read.table(file.path(foldername, "train", "X_train.txt"), col.names = features$feature)
+Y_train <- read.table(file.path(foldername, "train", "y_train.txt"), col.names = "activity_code")
+
+subject_test <- read.table(file.path(foldername, "test", "subject_test.txt"), col.names = "subject")
+X_test <- read.table(file.path(foldername, "test", "X_test.txt"), col.names = features$feature)
+Y_test <- read.table(file.path(foldername, "test", "y_test.txt"), col.names = "activity_code")
+
 
 # 1.2 Merge Data 
 x <- rbind(X_train, X_test)
