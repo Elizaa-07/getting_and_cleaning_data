@@ -1,31 +1,29 @@
-# getting_and_cleaning_data
-Assignment Week 4, with Code, Codebook and README
 
-# Getting and Cleaning Data: Course Project
+# Getting and Cleaning Data - Course Project
 
 ## Overview
 
-This repository contains the R script and supporting files for the "Getting and Cleaning Data" course project. The goal is to demonstrate data cleaning skills by producing a tidy dataset based on the UCI HAR Dataset (Human Activity Recognition Using Smartphones).
+This repository contains the R script `run_analysis.R` that:
 
----
+- Downloads and unzips the UCI HAR Dataset
+- Merges training and test datasets
+- Extracts only measurements on the mean and standard deviation
+- Applies descriptive activity names and variable labels
+- Creates a tidy dataset with the average of each variable per subject and activity
 
 ## Files
 
-- `run_analysis.R`: Main R script that loads, cleans, and transforms the data.
-- `CodeBook.md`: Description of the dataset, variables, and all processing steps.
-- `tidy_dataset.txt`: Final tidy dataset output.
-- `README.md`: This file, explaining the structure and purpose of the project.
+- `run_analysis.R`: Main script that performs the entire analysis.
+- `tidy_dataset.txt`: Output of the script – a tidy dataset.
+- `CodeBook.md`: Description of variables and transformations (see CodeBook).
 
----
+## How to Run
 
-## How to Run the Script
-
-1. Download and unzip the UCI HAR dataset from:
-   [UCI HAR Dataset](https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
-
-2. Place the folder `UCI HAR Dataset` in your working directory.
-
-3. Open R or RStudio and run:
+1. Make sure you have R and the `dplyr` and `tidyr` packages installed.
+2. Place `run_analysis.R` in your working directory.
+3. Run the script. It will:
+   - Download and unzip the dataset (if needed)
+   - Generate `tidy_dataset.txt` in the same directory
 
 ```r
 source("run_analysis.R")
