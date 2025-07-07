@@ -23,7 +23,7 @@ This repository contains the R script and supporting files for the "Getting and 
 1. Download and unzip the UCI HAR dataset from:
    [UCI HAR Dataset](https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
 
-2. Place the folder `UCI HAR Dataset` (or renamed as `UCI_HAR`) in your working directory.
+2. Place the folder `UCI HAR Dataset` in your working directory.
 
 3. Open R or RStudio and run:
 
